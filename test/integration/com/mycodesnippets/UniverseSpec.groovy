@@ -3,7 +3,7 @@ package com.mycodesnippets
 import spock.lang.*
 import grails.plugin.spock.*
 
-class UniverseSpec extends UnitSpec {
+class UniverseSpec extends IntegrationSpec {
 
     def "in the beginning, there was light"() {
         given:
