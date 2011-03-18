@@ -1,8 +1,8 @@
 package com.mycodesnippets
 
 class Planet {
-
-    boolean hasWater
+    String name
+    boolean water
 
     static hasMany = [moons: Moon]
     
@@ -10,4 +10,9 @@ class Planet {
 
     static constraints = {
     }
+	
+	String toString(){
+		"$name with water:$water" 
+	}
+
 }

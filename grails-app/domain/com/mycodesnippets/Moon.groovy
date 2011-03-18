@@ -1,11 +1,16 @@
 package com.mycodesnippets
 
 class Moon {
-
-    boolean hasWater
+    String name
+    boolean water
     
     static belongsTo = Planet
     
     static constraints = {
     }
+	
+	String toString(){
+		"$name with water:$water" 
+	}
+		
 }
