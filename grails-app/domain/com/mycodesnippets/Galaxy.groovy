@@ -12,25 +12,36 @@ class Galaxy {
     }
     
     static namedQueries = {
-        findAllByWaterbaringBodiesDescending(){
+        findAllByWaterbaringPlanetNames(){
+            createAlias 'suns', 's'
+            createAlias 's.planets', 'p'
+            
+            projections {
+                property 'name', 'galaxy'
+                property 's.name', 'sun'
+                property 'p.name', 'planet'
+            }
+            
+            eq 'p.water', true
+            
+            order 'galaxy'
+            order 'sun'
+            order 'planet'
+        }
+
+        findAllByWaterbaringMoonCountDescending(){
             createAlias 'suns', 's'
             createAlias 's.planets', 'p'
             createAlias 'p.moons', 'm'
             
 			projections {
                 groupProperty 'name'
-                countDistinct('p.id', 'planets')
-                countDistinct('m.id', 'moons')
+                countDistinct 'm.id', 'moons'
             }
             
-			or {
-	            eq 'p.water', true
-	            eq 'm.water', true
-			}
-			
-            order 'planets', 'desc'
+            eq 'm.water', true
             order 'moons', 'desc'
-        }
+        }        
     }
 	
 	String toString(){
