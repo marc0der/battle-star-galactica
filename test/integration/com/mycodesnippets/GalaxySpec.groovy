@@ -16,13 +16,12 @@ class GalaxySpec extends IntegrationSpec {
                 def sun = Sun.build(name: "sun $i $j")
                 galaxy.addToSuns sun
                 for(k in 1..3) {
-                    //
+                    //two planets with water in galaxy 1, on planet with water in galaxy 2
 					def planetWater = (i == 1 && j == 2 && k == 1) || (i == 1 && j == 2 && k == 2) || (i == 2 && j == 3 && k == 1)
                     def planet = Planet.build(name: "planet $i $j $k", water: planetWater)
                     sun.addToPlanets planet 
                     for(l in 1..3) {
-                        //two moons with water in galaxy 1 on planet 1 2 1.
-                        //one moon with water in galaxy 3 on planet 3 2 2.
+                        //two moons with water in galaxy 1 on planet 1 2 1, one moon with water in galaxy 3 on planet 3 2 2.
 						def moonWater = (i == 1 && j == 2 && k == 1 && (l == 1)) || (i == 1 && j == 2 && k == 1 && (l == 2)) || (i == 3 && j == 2 && k == 2 && l == 3)
                         def moon = Moon.build(name: "moon $i $j $k $l", water: moonWater)
                         planet.addToMoons moon
