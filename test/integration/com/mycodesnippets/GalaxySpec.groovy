@@ -35,10 +35,10 @@ class GalaxySpec extends IntegrationSpec {
     }
     
     def "find all galaxies that have waterbaring planets descending"() {
-        given:
+        when:
         def results = Galaxy.findAllByWaterbaringPlanetNames().list()
         
-		expect:
+		then:
         results[i][0] == name
         results[i][1] == sun
         results[i][2] == planet
@@ -52,11 +52,10 @@ class GalaxySpec extends IntegrationSpec {
     }
 
     def "find all galaxies that have waterbaring moons descending"() {
-        given:
+        when:
 		def results = Galaxy.findAllByWaterbaringMoonCountDescending().list()
-		println results
 		
-		expect:
+		then:
         results[i][0] == name
 		results[i][1] == waterMoons
         
