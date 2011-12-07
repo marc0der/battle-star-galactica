@@ -1,9 +1,3 @@
-dataSource {
-    pooled = true
-    driverClassName = "org.hsqldb.jdbcDriver"
-    username = "sa"
-    password = ""
-}
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = true
@@ -13,20 +7,22 @@ hibernate {
 environments {
     development {
         dataSource {
-			//postgres
             dbCreate = "update"
-            driverClassName = "org.postgresql.Driver"
-            dialect = "org.hibernate.dialect.PostgreSQLDialect"
-            url = "jdbc:postgresql://localhost:5432/battlestargalactica"
-            username = "postgres"
-            password = "postgres"
-            loggingSql = false
+            url = "jdbc:hsqldb:mem:devDb"
+			pooled = true
+			driverClassName = "org.hsqldb.jdbcDriver"
+			username = "sa"
+			password = ""
         }
     }
     test {
         dataSource {
             dbCreate = "update"
             url = "jdbc:hsqldb:mem:testDb"
+			pooled = true
+			driverClassName = "org.hsqldb.jdbcDriver"
+			username = "sa"
+			password = ""
         }
     }
     production {
